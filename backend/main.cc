@@ -1,11 +1,14 @@
 #include <drogon/drogon.h>
+#include "filters/Cors.h" 
+
 int main() {
-    //Set HTTP listener address and port
-    drogon::app().addListener("0.0.0.0", 5555);
-    //Load config file
-    //drogon::app().loadConfigFile("../config.json");
-    //drogon::app().loadConfigFile("../config.yaml");
-    //Run HTTP framework,the method will block in the internal event loop
+    drogon::app()
+        .addListener("0.0.0.0", 5555)
+        .setLogLevel(trantor::Logger::kWarn)
+        .setThreadNum(16)
+        .loadConfigFile("../config.json");  
+
+    std::cout<<"Starting Drogon server..." << std::endl;
     drogon::app().run();
     return 0;
 }
