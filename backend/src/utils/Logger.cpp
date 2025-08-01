@@ -1,5 +1,6 @@
 #include "utils/Logger.h"
 #include <filesystem>
+#include <iostream>  // for std::cout, std::cerr
 
 namespace Crypto {
     namespace Utils {
@@ -26,22 +27,24 @@ namespace Crypto {
 
             std::filesystem::path logPath(filePath);
             std::filesystem::path logDir = logPath.parent_path();
-
+            std::cout << "Log directory: " << logDir << std::endl;
             if(!logDir.empty() && !std::filesystem::exists(logDir)) {
                 try {
                     std::filesystem::create_directories(logDir);
                 } catch (const std::exception& e) {
-                    std::cerr << "failed to create log directory: " << e.what() << std::endl;
+                    std::cerr << "Failed to create log directory: " << e.what() << std::endl;
                     return false;
                 } 
             }
 
             logFile.open(filePath, std::ios::app); 
+            
             if (!logFile.is_open()) {
                 std::cerr << "Failed to open log file: " << filePath << std::endl;
-                return false;log(LogLevel::INFO, "Logger initialized with log level: " + logLevelToString(currentLogLevel));
+                return false;
             }
 
+            // Now it's safe to log since the file is open
             log(LogLevel::INFO, "Logger initialized - File: " + filePath + ", Level: " + logLevelToString(level));
             return true;
         }
@@ -75,28 +78,37 @@ namespace Crypto {
             }
         }
 
-        void Logger::log(LogLevel level, const std::string& message) {
-            if (level < currentLogLevel) return;
-
-            std::lock_guard<std::mutex> lock(fileMutex);
-            std::string timestamp = getCurrentTimeStamp();
-            std::string levelStr = logLevelToString(level);
-            
-            std::string logMessage = "[" + timestamp + "] [" + levelStr + "] " + message;
-
-            if (logFile.is_open()) {
-                logFile << logMessage << std::endl;
-                logFile.flush(); 
+    void Logger::log(LogLevel level, const std::string& message) {
+        // Early return if log level is too low
+        if (level < currentLogLevel) return;
+        std::lock_guard<std::mutex> lock(fileMutex);
+        
+        std::cout<< "log fuction called" << std::endl;
+        std::string timestamp = "getCurrentTimeStamp()";
+        std::string levelStr = logLevelToString(level);
+        std::string logMessage = "[" + timestamp + "] [" + levelStr + "] " + message;
+        std::cout << "Log message: " << logMessage << std::endl;
+        std::cout << "Log file path: " << logFilePath << std::endl;
+        // Write to file if it's opent
+        if (logFile.is_open()) {
+            std::cout << "Writing to log file: " << logFilePath << std::endl;
+            logFile << logMessage << std::endl;
+            // Flush only for critical errors or when explicitly needed
+            if (level >= LogLevel::ERROR) {
+                logFile.flush();
             }
-
-            if (consoleOutput) {
-                if (level >= LogLevel::ERROR) {
-                    std::cerr << logMessage << std::endl;
-                } else {
-                    std::cout << logMessage << std::endl;
-                }
+        } else {
+            std::cerr << "Log file is not open. Cannot write log message." << std::endl;
+        }
+        // Console output
+        if (consoleOutput) {
+            if (level >= LogLevel::ERROR) {
+                std::cerr << logMessage << std::endl;
+            } else {
+                std::cout << logMessage << std::endl;
             }
         }
+    }
 
         void Logger::debug(const std::string& message) {
             log(LogLevel::DEBUG, message);

@@ -1,0 +1,16 @@
+{
+    "blockchain": {
+        "networkName": "MyBlockchain",
+        "targetBlockTime": 600,
+        "maxBlockSize": 1048576
+    },
+    "network": {
+        "port": 8333,
+        "bindAddress": "0.0.0.0",
+        "maxConnections": 125
+    },
+    "mining": {
+        "enableMining": false,
+        "threadCount": 1
+    }
+}

@@ -13,31 +13,33 @@ namespace Crypto {
         using json = nlohmann::json;
 
         class Config {
-        private: 
+        private:
             static std::unique_ptr<Config> instance;
             static std::mutex mutex_;
-
+            
             json configData;
             std::string configFilePath;
             std::mutex configMutex;
 
+            // Private constructor
             Config();
 
-            // helper fucntion to validate the JSON Structure
+            // Helper method to validate JSON structure
             bool validateConfig(const json& config);
 
-        public: 
+        public:
+            // Singleton pattern
             Config(const Config&) = delete;
             Config& operator=(const Config&) = delete;
 
-            // Singleton Instance 
+            // Get singleton instance
             static Config* getInstance();
 
-            // Load configuration from a file
+            // Load configuration from file
             bool loadFromFile(const std::string& filePath);
 
-            // Save configuration to a file
-            bool saveToFile(const std::string& filePath);
+            // Save configuration to file
+            bool saveToFile(const std::string& filePath = "");
 
             // Get configuration values with different types
             std::string getString(const std::string& key, const std::string& defaultValue = "");
@@ -46,29 +48,40 @@ namespace Crypto {
             bool getBool(const std::string& key, bool defaultValue = false);
             std::vector<std::string> getStringArray(const std::string& key);
 
-            // check key existence 
+            // Set configuration values
+            void setString(const std::string& key, const std::string& value);
+            void setInt(const std::string& key, int value);
+            void setDouble(const std::string& key, double value);
+            void setBool(const std::string& key, bool value);
+            void setStringArray(const std::string& key, const std::vector<std::string>& value);
+
+            // Check if key exists
             bool hasKey(const std::string& key);
 
-            // Get nested values using dot notation
+            // Get nested values using dot notation (e.g., "network.port")
             json getValue(const std::string& key);
             void setValue(const std::string& key, const json& value);
 
             // Get all configuration as JSON
             json getAllConfig();
 
-            // reload configuration from the file
+            // Reload configuration from file
             bool reload();
 
-            // validate current configuration
+            // Create default configuration
+            void createDefaultConfig();
+
+            // Validate current configuration
             bool validate();
 
             // Get configuration file path
-            std::string getConfigFilePath() const;  
+            std::string getConfigFilePath() const;
 
+            // Destructor
             ~Config() = default;
-
         };
 
+        // Configuration structure for blockchain parameters
         struct BlockchainConfig {
             std::string networkName;
             int targetBlockTime;          // in seconds
@@ -80,6 +93,7 @@ namespace Crypto {
             int halvingPeriod;            // in blocks
         };
 
+        // Configuration structure for network parameters
         struct NetworkConfig {
             std::string bindAddress;
             int port;
@@ -91,6 +105,7 @@ namespace Crypto {
             std::string userAgent;
         };
 
+        // Configuration structure for mining parameters
         struct MiningConfig {
             bool enableMining;
             int threadCount;

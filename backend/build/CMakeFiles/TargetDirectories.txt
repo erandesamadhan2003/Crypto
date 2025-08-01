@@ -1,0 +1,3 @@
+/run/media/samadhan/sda3/Projects/crypto/backend/build/CMakeFiles/Crypto.dir
+/run/media/samadhan/sda3/Projects/crypto/backend/build/CMakeFiles/edit_cache.dir
+/run/media/samadhan/sda3/Projects/crypto/backend/build/CMakeFiles/rebuild_cache.dir

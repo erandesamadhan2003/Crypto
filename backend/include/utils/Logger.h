@@ -60,12 +60,12 @@ namespace Crypto {
             ~Logger();
         };
 
-        #define LOG_DEBUG(msg) Crypto::Utils::Logger::getInstance()->debug(msg)
-        #define LOG_INFO(msg) Crypto::Utils::Logger::getInstance()->info(msg)
-        #define LOG_WARNING(msg) Crypto::Utils::Logger::getInstance()->warning(msg)
-        #define LOG_ERROR(msg) Crypto::Utils::Logger::getInstance()->error(msg)
-        #define LOG_CRITICAL(msg) Crypto::Utils::Logger::getInstance()->critical(msg)
-    } // namespace Utils
+    #define LOG_DEBUG(msg)    Crypto::Utils::Logger::getInstance()->debug(msg)
+    #define LOG_INFO(msg)     Crypto::Utils::Logger::getInstance()->info(msg)
+    #define LOG_WARNING(msg)  Crypto::Utils::Logger::getInstance()->warning(msg)
+    #define LOG_ERROR(msg)    Crypto::Utils::Logger::getInstance()->error(msg)
+
+} // namespace Utils
 } // namespace Crypto
 
 #endif // LOGGER_H
