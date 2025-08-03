@@ -6,7 +6,7 @@ cd build
 cmake ..
 make 
 echo "Build Successful"
+echo 
 
-# Run from project root instead of build directory
 cd ..
 ./build/Crypto

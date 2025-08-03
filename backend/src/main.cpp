@@ -1,38 +1,28 @@
-#include "utils/config.h"
 #include "utils/Logger.h"
+#include "utils/Config.h"
+#include <string>
 #include <iostream>
 
-// using namespace Crypto::Utils;
-
-#include <filesystem>
-
 int main() {
+    using namespace Crypto::Utils;
 
-    std::cout << "Current working directory: " << std::filesystem::current_path() << std::endl;
-    
-    // Initialize Logger
-    Crypto::Utils::Logger* logger = Crypto::Utils::Logger::getInstance();
-    logger->initialize("/run/media/samadhan/sda3/Projects/crypto/backend/logs/blockchain.log", 
-                  Crypto::Utils::LogLevel::INFO, true);
+    Logger* logger = Logger::getInstance();
+    logger->log(LogLevel::INFO, "Starting Config Test");
 
-    if (!logger->initialize("logs/blockchain.log", Crypto::Utils::LogLevel::INFO, true)) {
-        std::cerr << "Failed to initialize logger!" << std::endl;
+    const std::string configPath = "../config/sample_config.json";
+
+    if (!Config::loadConfig(configPath)) {
+        logger->log(LogLevel::CRITICAL, "Failed to load configuration. Exiting.");
         return 1;
     }
-       
-    // Initialize Config
-    Crypto::Utils::Config* config = Crypto::Utils::Config::getInstance();
-    config->createDefaultConfig();
-    config->saveToFile("config/blockchain_config.json");
-    
-    // Use logging
-    LOG_INFO("Blockchain node starting...");
-    LOG_DEBUG("Debug information");
-    LOG_ERROR("Error occurred");
-    
-    // Use configuration
-    int port = config->getInt("network.port", 8333);
-    std::string networkName = config->getString("blockchain.networkName");
-    
+
+    int answer = Config::getInt("answer.everything");
+    std::string greeting = Config::getString("greeting.message");
+    bool debug = Config::getBool("debug.enabled");
+
+    logger->log(LogLevel::INFO, "Answer to Everything: " + std::to_string(answer));
+    logger->log(LogLevel::INFO, "Greeting: " + greeting);
+    logger->log(LogLevel::INFO, std::string("Debug Mode: ") + (debug ? "ON" : "OFF"));
+
     return 0;
 }
