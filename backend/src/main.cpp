@@ -7,12 +7,12 @@ int main() {
     using namespace Crypto::Utils;
 
     Logger* logger = Logger::getInstance();
-    logger->log(LogLevel::INFO, "Starting Config Test");
+    LOG_INFO("STARTING CONFIG TEST");
 
     const std::string configPath = "../config/sample_config.json";
 
     if (!Config::loadConfig(configPath)) {
-        logger->log(LogLevel::CRITICAL, "Failed to load configuration. Exiting.");
+        LOG_ERROR("Failed to load configuration from " + configPath);
         return 1;
     }
 
@@ -20,9 +20,9 @@ int main() {
     std::string greeting = Config::getString("greeting.message");
     bool debug = Config::getBool("debug.enabled");
 
-    logger->log(LogLevel::INFO, "Answer to Everything: " + std::to_string(answer));
-    logger->log(LogLevel::INFO, "Greeting: " + greeting);
-    logger->log(LogLevel::INFO, std::string("Debug Mode: ") + (debug ? "ON" : "OFF"));
+    LOG_INFO( "Answer to Everything: " + std::to_string(answer));
+    LOG_INFO("Greeting: " + greeting);
+    LOG_INFO(std::string("Debug Mode: ") + (debug ? "ON" : "OFF"));
 
     return 0;
 }

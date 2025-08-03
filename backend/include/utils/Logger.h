@@ -28,10 +28,23 @@ namespace Crypto {
             Logger(const Logger&) = delete;
             Logger& operator=(const Logger&) = delete;
 
+            void debug(const std::string& message);
+            void info(const std::string& message);
+            void warning(const std::string& message);
+            void error(const std::string& message);
+            void critical(const std::string& message);
+
+
             static Logger* getInstance();
             void log(LogLevel level, const std::string& message);
             ~Logger();
         };
+
+        #define LOG_DEBUG(msg) Crypto::Utils::Logger::getInstance()->debug(msg)
+        #define LOG_INFO(msg) Crypto::Utils::Logger::getInstance()->info(msg)
+        #define LOG_WARNING(msg) Crypto::Utils::Logger::getInstance()->warning(msg)
+        #define LOG_ERROR(msg) Crypto::Utils::Logger::getInstance()->error(msg)
+        #define LOG_CRITICAL(msg) Crypto::Utils::Logger::getInstance()->critical(msg)
     }
 }
 

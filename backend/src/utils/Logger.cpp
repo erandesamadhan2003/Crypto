@@ -51,9 +51,29 @@ namespace Crypto {
                 std::cout << logMessage << std::endl;
         }
 
+
+        void Logger::debug(const std::string& message) {
+            log(LogLevel::DEBUG, message);
+        }
+        void Logger::info(const std::string& message) {
+            log(LogLevel::INFO, message);
+        }
+        void Logger::warning(const std::string& message) {
+            log(LogLevel::WARNING, message);
+        }
+        void Logger::error(const std::string& message) {    
+            log(LogLevel::ERROR, message);
+        }   
+        void Logger::critical(const std::string& message) {
+            log(LogLevel::CRITICAL, message);
+        }   
+        
+        // DESTRUCTOR
         Logger::~Logger() {
             std::cout << "[Logger destroyed]" << std::endl;
         }
+
+
 
     } // namespace Utils
 } // namespace Crypto
