@@ -15,6 +15,8 @@ add_executable(Crypto
     src/main.cpp
     src/utils/Logger.cpp
     src/utils/config.cpp
+    src/utils/JSONHelper.cpp
+    src/crypto/hash.cpp
 )
 
 target_link_libraries(Crypto

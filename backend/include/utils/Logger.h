@@ -46,6 +46,7 @@ namespace Crypto {
         #define LOG_ERROR(msg) Crypto::Utils::Logger::getInstance()->error(msg)
         #define LOG_CRITICAL(msg) Crypto::Utils::Logger::getInstance()->critical(msg)
     }
+    
 }
 
 #endif // LOGGER_H

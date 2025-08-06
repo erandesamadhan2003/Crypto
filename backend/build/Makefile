@@ -129,6 +129,30 @@ Crypto/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Crypto.dir/build.make CMakeFiles/Crypto.dir/build
 .PHONY : Crypto/fast
 
+src/crypto/hash.o: src/crypto/hash.cpp.o
+.PHONY : src/crypto/hash.o
+
+# target to build an object file
+src/crypto/hash.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Crypto.dir/build.make CMakeFiles/Crypto.dir/src/crypto/hash.cpp.o
+.PHONY : src/crypto/hash.cpp.o
+
+src/crypto/hash.i: src/crypto/hash.cpp.i
+.PHONY : src/crypto/hash.i
+
+# target to preprocess a source file
+src/crypto/hash.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Crypto.dir/build.make CMakeFiles/Crypto.dir/src/crypto/hash.cpp.i
+.PHONY : src/crypto/hash.cpp.i
+
+src/crypto/hash.s: src/crypto/hash.cpp.s
+.PHONY : src/crypto/hash.s
+
+# target to generate assembly for a file
+src/crypto/hash.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Crypto.dir/build.make CMakeFiles/Crypto.dir/src/crypto/hash.cpp.s
+.PHONY : src/crypto/hash.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -152,6 +176,30 @@ src/main.s: src/main.cpp.s
 src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Crypto.dir/build.make CMakeFiles/Crypto.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
+
+src/utils/JSONHelper.o: src/utils/JSONHelper.cpp.o
+.PHONY : src/utils/JSONHelper.o
+
+# target to build an object file
+src/utils/JSONHelper.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Crypto.dir/build.make CMakeFiles/Crypto.dir/src/utils/JSONHelper.cpp.o
+.PHONY : src/utils/JSONHelper.cpp.o
+
+src/utils/JSONHelper.i: src/utils/JSONHelper.cpp.i
+.PHONY : src/utils/JSONHelper.i
+
+# target to preprocess a source file
+src/utils/JSONHelper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Crypto.dir/build.make CMakeFiles/Crypto.dir/src/utils/JSONHelper.cpp.i
+.PHONY : src/utils/JSONHelper.cpp.i
+
+src/utils/JSONHelper.s: src/utils/JSONHelper.cpp.s
+.PHONY : src/utils/JSONHelper.s
+
+# target to generate assembly for a file
+src/utils/JSONHelper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Crypto.dir/build.make CMakeFiles/Crypto.dir/src/utils/JSONHelper.cpp.s
+.PHONY : src/utils/JSONHelper.cpp.s
 
 src/utils/Logger.o: src/utils/Logger.cpp.o
 .PHONY : src/utils/Logger.o
@@ -210,9 +258,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Crypto"
+	@echo "... src/crypto/hash.o"
+	@echo "... src/crypto/hash.i"
+	@echo "... src/crypto/hash.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/utils/JSONHelper.o"
+	@echo "... src/utils/JSONHelper.i"
+	@echo "... src/utils/JSONHelper.s"
 	@echo "... src/utils/Logger.o"
 	@echo "... src/utils/Logger.i"
 	@echo "... src/utils/Logger.s"

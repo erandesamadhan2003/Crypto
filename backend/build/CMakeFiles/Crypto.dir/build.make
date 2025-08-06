@@ -114,11 +114,41 @@ CMakeFiles/Crypto.dir/src/utils/config.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Crypto.dir/src/utils/config.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /run/media/samadhan/sda3/Projects/crypto/backend/src/utils/config.cpp -o CMakeFiles/Crypto.dir/src/utils/config.cpp.s
 
+CMakeFiles/Crypto.dir/src/utils/JSONHelper.cpp.o: CMakeFiles/Crypto.dir/flags.make
+CMakeFiles/Crypto.dir/src/utils/JSONHelper.cpp.o: /run/media/samadhan/sda3/Projects/crypto/backend/src/utils/JSONHelper.cpp
+CMakeFiles/Crypto.dir/src/utils/JSONHelper.cpp.o: CMakeFiles/Crypto.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/run/media/samadhan/sda3/Projects/crypto/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Crypto.dir/src/utils/JSONHelper.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Crypto.dir/src/utils/JSONHelper.cpp.o -MF CMakeFiles/Crypto.dir/src/utils/JSONHelper.cpp.o.d -o CMakeFiles/Crypto.dir/src/utils/JSONHelper.cpp.o -c /run/media/samadhan/sda3/Projects/crypto/backend/src/utils/JSONHelper.cpp
+
+CMakeFiles/Crypto.dir/src/utils/JSONHelper.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Crypto.dir/src/utils/JSONHelper.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /run/media/samadhan/sda3/Projects/crypto/backend/src/utils/JSONHelper.cpp > CMakeFiles/Crypto.dir/src/utils/JSONHelper.cpp.i
+
+CMakeFiles/Crypto.dir/src/utils/JSONHelper.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Crypto.dir/src/utils/JSONHelper.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /run/media/samadhan/sda3/Projects/crypto/backend/src/utils/JSONHelper.cpp -o CMakeFiles/Crypto.dir/src/utils/JSONHelper.cpp.s
+
+CMakeFiles/Crypto.dir/src/crypto/hash.cpp.o: CMakeFiles/Crypto.dir/flags.make
+CMakeFiles/Crypto.dir/src/crypto/hash.cpp.o: /run/media/samadhan/sda3/Projects/crypto/backend/src/crypto/hash.cpp
+CMakeFiles/Crypto.dir/src/crypto/hash.cpp.o: CMakeFiles/Crypto.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/run/media/samadhan/sda3/Projects/crypto/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Crypto.dir/src/crypto/hash.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Crypto.dir/src/crypto/hash.cpp.o -MF CMakeFiles/Crypto.dir/src/crypto/hash.cpp.o.d -o CMakeFiles/Crypto.dir/src/crypto/hash.cpp.o -c /run/media/samadhan/sda3/Projects/crypto/backend/src/crypto/hash.cpp
+
+CMakeFiles/Crypto.dir/src/crypto/hash.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Crypto.dir/src/crypto/hash.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /run/media/samadhan/sda3/Projects/crypto/backend/src/crypto/hash.cpp > CMakeFiles/Crypto.dir/src/crypto/hash.cpp.i
+
+CMakeFiles/Crypto.dir/src/crypto/hash.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Crypto.dir/src/crypto/hash.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /run/media/samadhan/sda3/Projects/crypto/backend/src/crypto/hash.cpp -o CMakeFiles/Crypto.dir/src/crypto/hash.cpp.s
+
 # Object files for target Crypto
 Crypto_OBJECTS = \
 "CMakeFiles/Crypto.dir/src/main.cpp.o" \
 "CMakeFiles/Crypto.dir/src/utils/Logger.cpp.o" \
-"CMakeFiles/Crypto.dir/src/utils/config.cpp.o"
+"CMakeFiles/Crypto.dir/src/utils/config.cpp.o" \
+"CMakeFiles/Crypto.dir/src/utils/JSONHelper.cpp.o" \
+"CMakeFiles/Crypto.dir/src/crypto/hash.cpp.o"
 
 # External object files for target Crypto
 Crypto_EXTERNAL_OBJECTS =
@@ -126,13 +156,15 @@ Crypto_EXTERNAL_OBJECTS =
 Crypto: CMakeFiles/Crypto.dir/src/main.cpp.o
 Crypto: CMakeFiles/Crypto.dir/src/utils/Logger.cpp.o
 Crypto: CMakeFiles/Crypto.dir/src/utils/config.cpp.o
+Crypto: CMakeFiles/Crypto.dir/src/utils/JSONHelper.cpp.o
+Crypto: CMakeFiles/Crypto.dir/src/crypto/hash.cpp.o
 Crypto: CMakeFiles/Crypto.dir/build.make
 Crypto: CMakeFiles/Crypto.dir/compiler_depend.ts
 Crypto: /usr/lib/libssl.so
 Crypto: /usr/lib/libcrypto.so
 Crypto: /usr/lib/libz.so
 Crypto: CMakeFiles/Crypto.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/run/media/samadhan/sda3/Projects/crypto/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Crypto"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/run/media/samadhan/sda3/Projects/crypto/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable Crypto"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Crypto.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
